@@ -7,21 +7,19 @@ export default class Chandrayaan3 {
 
     leftDir = ['N', 'W', 'S', 'E']
     rightDir = ['S', 'W', 'N', 'E']
+    axisPair = {
+        'E': { index: 0, pos : 1 },
+        'W': { index: 0, pos : -1 },
+        'N': { index: 1, pos : 1 },
+        'S': { index: 1, pos : -1 },
+        'U': { index: 2, pos : 1 },
+        'D': { index: 2, pos : -1 }
+    }
 
     moveForwardBackward(multiplier) {
-        if (this.direction === 'N') {
-            this.position[1] = this.position[1] + multiplier;
-        } else if (this.direction === 'S') {
-            this.position[1] = this.position[1] - multiplier
-        } else if (this.direction === 'E') {
-            this.position[0] = this.position[0] + multiplier
-        } else if (this.direction === 'W') {
-            this.position[0] = this.position[0] - multiplier
-        } else if (this.direction === 'U') {
-            this.position[2] = this.position[2] + multiplier
-        } else if (this.direction === 'D') {
-            this.position[2] = this.position[2] - multiplier
-        }
+        const indVal = this.axisPair[this.direction].index
+        const posVal = this.axisPair[this.direction].pos
+        this.position[indVal] = this.position[indVal] + posVal * multiplier
     }
 
     turnLeftRight(directions) {

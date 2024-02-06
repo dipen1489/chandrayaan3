@@ -1,9 +1,10 @@
 import './App.css';
+import Chandrayaan3 from './Components/Chandrayaan3/chandrayaan3'
 
 function App() {
   return (
     <div className="App">
-      Hello World
+      <Chandrayaan3 />
     </div>
   );
 }

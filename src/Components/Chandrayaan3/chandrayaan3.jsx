@@ -29,7 +29,7 @@ function Chandrayaan3() {
             <div className='menu-container'>
                 <input className='input-style' name="myInput" value={commands} onChange={handleOnChangeInput}/>
                 <button className='button-style' onClick={handleSendOnClick}>Send</button>
-                <div style={{fontSize:12, marginTop: '5px'}}>Info: add comma seperated commands "f, b, l, r, u, d" and then click Send</div>
+                <div style={{fontSize:12, marginTop: '5px'}}>Info: add comma seperated commands "f,b,l,r,u,d" and then click Send</div>
             </div>
             {result?.position && <div className='result-div-style'>{resultLabel()}</div> }
             <div>

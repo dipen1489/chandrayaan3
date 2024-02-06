@@ -5,12 +5,28 @@ export default class Chandrayaan3 {
         this.direction = initialDirection;
     }
 
-    moveForwardBackward() {
-        this.position = [0,1,0]
+    leftDir = ['N', 'W', 'S', 'E']
+    rightDir = ['S', 'W', 'N', 'E']
+
+    moveForwardBackward(multiplier) {
+        if (this.direction === 'N') {
+            this.position[1] = this.position[1] + multiplier;
+        } else if (this.direction === 'S') {
+            this.position[1] = this.position[1] - multiplier
+        } else if (this.direction === 'E') {
+            this.position[0] = this.position[0] + multiplier
+        } else if (this.direction === 'W') {
+            this.position[0] = this.position[0] - multiplier
+        } else if (this.direction === 'U') {
+            this.position[2] = this.position[2] + multiplier
+        } else if (this.direction === 'D') {
+            this.position[2] = this.position[2] - multiplier
+        }
     }
 
-    turnLeftRight() {
-        this.direction = 'N'
+    turnLeftRight(directions) {
+        const currentIdx = directions.indexOf(this.direction);
+        this.direction = directions[(currentIdx + 1) % 4];
     }
 
     turnUpDown(direction) {
@@ -21,16 +37,16 @@ export default class Chandrayaan3 {
         for (const command of commands) {
             switch (command) {
                 case 'f':
-                    this.moveForwardBackward();
+                    this.moveForwardBackward(1);
                     break;
                 case 'b':
-                    this.moveForwardBackward();
+                    this.moveForwardBackward(-1);
                     break;
                 case 'l':
-                    this.turnLeftRight();
+                    this.turnLeftRight(this.leftDir);
                     break;
                 case 'r':
-                    this.turnLeftRight();
+                    this.turnLeftRight(this.rightDir);
                     break;
                 case 'u':
                     this.turnUpDown('U');

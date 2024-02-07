@@ -61,5 +61,6 @@ export default class Chandrayaan3 {
             position: this.position,
             direction: this.direction
         };
+        
     }
 }
